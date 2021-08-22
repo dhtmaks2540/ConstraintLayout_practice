@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <!-- centercrop 가로 세로중 짧은 쪽은 이미지뷰에 꽉 맞게 출력, 비율은 유지되고 레이아웃을 벗어난 곳은 출력 X -->
+    <!-- dimensionRatio에서 h를 줬으므로 width를 제약조건에 맞게 설정한 뒤 height를 결정 -->
+    <!-- 즉 start, end를 parent에 맞추고 start, end에 margin을 20준 만큼의 크기를 16비율로 잡고 -->
+    <!-- 그것의 9비율 만큼의 크기를 height로 준다 -->
+    <!-- 이미지에 메소드 셋팅 -->
+    <ImageView
+        android:id="@+id/image2"
+        android:layout_width="0dp"
+        android:layout_height="200dp"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="15dp"
+        android:onClick="toggleMode"
+        android:scaleType="centerCrop"
+        android:src="@drawable/lake"
+        app:layout_constraintDimensionRatio="h, 1:1"
+        app:layout_constraintEnd_toEndOf="@id/text10"
+        app:layout_constraintStart_toStartOf="@id/text10"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/text10"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="Lake Tahoe"
+        android:textSize="25sp"
+        app:layout_constraintEnd_toStartOf="@id/text11"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/image2" />
+
+    <!-- bias를 통해 한쪽으로 치우치게 만들 수 있다 -->
+    <TextView
+        android:id="@+id/text11"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginEnd="30dp"
+        android:layout_marginBottom="30dp"
+        android:text="@string/lake_discription"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@id/image2"
+        app:layout_constraintTop_toTopOf="@id/image2"
+        app:layout_constraintVertical_bias="0.0" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
